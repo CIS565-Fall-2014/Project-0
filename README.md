@@ -123,3 +123,5 @@ the current directory.
 * 4. Send an email to Harmony with your name, github account name, and the
     grade you believe you deserve.
 * 5. You're done with Project 0!
+
+![Alt text](https://dl.dropboxusercontent.com/u/53181465/MyGithub.png?raw=true "GithubScreenShot ")
