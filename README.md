@@ -1,6 +1,8 @@
 Project 0
 =========
 
+![Screenshot](screen1.png)
+
 Project 0 : Get CUDA set up and running
 
 ## NOTE :
