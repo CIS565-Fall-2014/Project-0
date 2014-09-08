@@ -124,4 +124,4 @@ the current directory.
     grade you believe you deserve.
 * 5. You're done with Project 0!
 
-![Alt text](https://dl.dropboxusercontent.com/u/53181465/CUDATEST.pngraw=true "GithubScreenShot ")
+![Alt text](https://dl.dropboxusercontent.com/u/53181465/CUDATEST.png?raw=true "GithubScreenShot ")
