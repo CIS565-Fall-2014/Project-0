@@ -1,6 +1,6 @@
 EXEC := "build/CIS565_PROJ_0"
 
-.PHONY: all debug release run run-debug clean
+.PHONY: all debug release run run-debug format clean
 
 all: debug
 
@@ -15,6 +15,9 @@ run:
 
 run-debug:
 	CUDA_DEBUGGER_SOFTWARE_PREEMPTION=1 optirun cuda-gdb ${EXEC}
+
+format:
+	astyle --mode=c --style=1tbs -pcHs4 -r 'src/*.cpp' 'src/*.hpp' 'src/*.cu' 'src/*.h'
 
 clean:
 	rm -rf build
