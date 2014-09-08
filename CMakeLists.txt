@@ -1,9 +1,5 @@
 cmake_minimum_required(VERSION 3.0.0)
 
-#on OSX we have to explicitly set clang/clang++
-set (CMAKE_C_COMPILER clang)
-set (CMAKE_CXX_COMPILER clang++)
-
 project(CIS565_PROJ_0)
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake")
@@ -30,18 +26,22 @@ set(GLEW_LIBRARY_DIR ${CMAKE_LIBRARY_PATH})
 #Find up and set up core dependency libs
 find_library(GLFW_LIBRARY "glfw3" HINTS ${GLFW_LIBRARY_DIR})
 find_package(GLUT)
-find_package(OPENGL)
+find_package(OpenGL)
 find_package(GLEW)
 
 set(CORELIBS ${GLFW_LIBRARY} ${GLUT_LIBRARY} ${OPENGL_LIBRARY} ${GLEW_LIBRARY})
 
 #OSX-specific hacks/fixes
 if(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+    #on OSX we have to explicitly set clang/clang++
+    set (CMAKE_C_COMPILER clang)
+    set (CMAKE_CXX_COMPILER clang++)
+
    	#Link IOKit because this is where we get GL stuff for OSX
    	set(IOKIT "-framework IOKit")
 	set(CORELIBS ${CORELIBS} ${IOKIT})
 	#Link against libstdc++ since CUDA doesn't support libc++ yet
-	set(CUDA_NVCC_FLAGS "--compiler-options;-stdlib=libstdc++;")
+	set(CUDA_NVCC_FLAGS "--compiler-options;-stdlib=libstdc++")
 endif(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
 
 #Linux specific hacks/fixes
@@ -50,7 +50,9 @@ if(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 endif()
 
 #Compiler flag magic
-if(${CMAKE_SYSTEM_NAME} MATCHES "Linux" OR ${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+if(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -m64 -msse2")
+elseif(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
 	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -m64 -msse2 -stdlib=libstdc++")
 elseif(WIN32)
 	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
