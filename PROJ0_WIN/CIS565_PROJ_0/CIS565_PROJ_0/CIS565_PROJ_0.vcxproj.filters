@@ -35,4 +35,7 @@
       <Filter>Source Files</Filter>
     </CudaCompile>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\external\bin\glut32.dll" />
+  </ItemGroup>
 </Project>
