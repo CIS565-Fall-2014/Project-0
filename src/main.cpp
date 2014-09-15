@@ -10,8 +10,7 @@
 //====================================
 int main(int argc, char* argv[]){ 
     // Change this line to use your name!
-    m_yourName = "[YOUR NAME HERE]";
-
+    m_yourName = "Zhen Gou";
     if(Init(argc, argv) == true){
 #if _WIN32
 		// Glut callbacks
