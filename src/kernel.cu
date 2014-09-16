@@ -31,28 +31,19 @@ __global__ void CreateVersionVisualization(uchar4* PBOpos, int width, int height
         PBOpos[index].y = 0;
         PBOpos[index].z = 0;
 
-        if (y < height / 2) {
-            if (major == 1) {
-                PBOpos[index].x = 255;
-            } else if (major == 2) {
-                PBOpos[index].y = 255;
-            } else if (major == 3) {
-                PBOpos[index].z = 255;
-            }
-        } else {
-            if (minor == 0) {
-                PBOpos[index].x = 255;
-            } else if (minor == 1) {
-                PBOpos[index].y = 255;
-            } else if (minor == 2) {
-                PBOpos[index].z = 255;
-            } else if (minor == 3) {
-                PBOpos[index].x = 255;
-                PBOpos[index].y = 255;
-            } else if (minor == 5) {
-                PBOpos[index].z = 255;
-                PBOpos[index].y = 255;
-            }
+        int ver = y < height / 2 ? major : minor;
+        if (ver == 0) {
+            PBOpos[index].x = 255;
+        } else if (ver == 1) {
+            PBOpos[index].y = 255;
+        } else if (ver == 2) {
+            PBOpos[index].z = 255;
+        } else if (ver == 3) {
+            PBOpos[index].x = 255;
+            PBOpos[index].y = 255;
+        } else if (ver == 5) {
+            PBOpos[index].z = 255;
+            PBOpos[index].y = 255;
         }
     }
 }

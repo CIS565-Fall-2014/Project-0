@@ -11,10 +11,10 @@ release:
 	(mkdir -p build && cd build && cmake .. -DCMAKE_BUILD_TYPE=release && make)
 
 run:
-	optirun ${EXEC}
+	${EXEC}
 
 run-debug:
-	CUDA_DEBUGGER_SOFTWARE_PREEMPTION=1 optirun cuda-gdb ${EXEC}
+	CUDA_DEBUGGER_SOFTWARE_PREEMPTION=1 cuda-gdb ${EXEC}
 
 format:
 	astyle --mode=c --style=1tbs -pcHs4 -r 'src/*.cpp' 'src/*.hpp' 'src/*.cu' 'src/*.h'
