@@ -1,7 +1,7 @@
 Project 0
 =========
 
-Project 0 : Get CUDA set up and running
+Get CUDA set up and running
 
 ## NOTE :
 This project (and all other projects in this course) requires a NVIDIA graphics
